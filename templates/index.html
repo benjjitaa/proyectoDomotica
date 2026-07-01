@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta http-equiv="refresh" content="3"> 
+    <title>Domótica Terminal</title>
+    <style>
+        /* REGLA: SOLO USO DE ID (#), NADA DE CLASES (.) */
+        #pantalla { background-color: #000000; color: #00ff00; font-family: 'Courier New', monospace; text-align: center; margin: 0; padding: 20px; }
+        #tituloprincipal { color: #ffffff; border-bottom: 2px solid #00ff00; padding-bottom: 10px; }
+        
+        #contenedor-monitor { background-color: #111111; border: 3px solid #00ff00; width: 70%; height: 250px; margin: 0 auto; overflow-y: scroll; text-align: left; padding: 15px; box-shadow: 0 0 10px #00ff00; }
+        
+        #panel-control { margin-top: 30px; border: 1px solid #00ff00; padding: 15px; width: 70%; margin: 20px auto; }
+        
+        #btn-sala { background-color: #004400; color: #00ff00; padding: 10px 20px; font-weight: bold; border: 2px solid #00ff00; cursor: pointer; }
+        #btn-patio { background-color: #444400; color: #ffff00; padding: 10px 20px; font-weight: bold; border: 2px solid #ffff00; cursor: pointer; }
+        #btn-clima { background-color: #440000; color: #ff0000; padding: 10px 20px; font-weight: bold; border: 2px solid #ff0000; cursor: pointer; }
+    </style>
+</head>
+<body id="pantalla">
+    <h1 id="tituloprincipal">SISTEMA DOMÓTICO - ESP32</h1>
+    
+    <h2>Monitor de Eventos (Supabase)</h2>
+    <div id="contenedor-monitor">
+        {% for evento in eventos %}
+            <p id="linea-log">[{{ evento.fecha_hora[:19] }}] Dispositivo: {{ evento.dispositivo }} -> {{ evento.accion }}</p>
+        {% endfor %}
+    </div>
+
+    <div id="panel-control">
+        <h2>Panel de Activación</h2>
+        <form action="/activar/sala" method="POST" id="form-sala" style="display:inline;">
+            <button type="submit" id="btn-sala">Alternar Luz Sala</button>
+        </form>
+        
+        <form action="/activar/patio" method="POST" id="form-patio" style="display:inline;">
+            <button type="submit" id="btn-patio">Alternar Luz Patio</button>
+        </form>
+        
+        <form action="/activar/clima" method="POST" id="form-clima" style="display:inline;">
+            <button type="submit" id="btn-clima">Alternar Climatización</button>
+        </form>
+    </div>
+</body>
+</html>
