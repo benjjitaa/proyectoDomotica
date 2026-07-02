@@ -19,9 +19,13 @@ Para este proyecto, se implementaron dos microcontroladores con responsabilidade
 * Función: Actúa como el actuador del sistema. Se encarga de recibir instrucciones desde el servidor central a través de peticiones HTTP para consultar el estado de la casa.
 * Acción: Enciende o apaga físicamente los LEDs correspondientes a la Sala, Patio y Clima según el estado de la base de datos.
 
+![Circuito de Referencia para Control Domotica](controlDomotica.png)
+
 ### ESP32 N°2: Módulo Sensor (Sistema de Seguridad)
 * Función: Actúa como el sensor del sistema. Monitorea constantemente un botón de hardware (simulando un botón de pánico o intrusión).
 * Acción: Al detectar una pulsación, envía inmediatamente una alerta al servidor para registrar un evento de seguridad directamente en la tabla de Supabase.
+
+![Circuito de Referencia para Boton de Pánico](botonPanico.png)
 
 ---
 
